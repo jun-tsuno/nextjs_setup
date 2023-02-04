@@ -1,18 +1,23 @@
-import './globals.css'
+"use client";
+
+import { useState } from "react";
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
-    </html>
-  )
+	const [count, setCount] = useState(0);
+
+	return (
+		<html lang="en">
+			<head />
+			<body>
+				<h2>Shared Header</h2>
+				<button onClick={() => setCount(count + 1)}>+</button>
+				<div>{count}</div>
+				{children}
+			</body>
+		</html>
+	);
 }
